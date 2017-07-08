@@ -1,0 +1,208 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterPage.master.cs" Inherits="MasterPage" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Admin Panel</title>
+
+    <link href="resources/css/bootstrap.min.css" rel="stylesheet">
+    <link href="resources/css/datepicker3.css" rel="stylesheet">
+    <link href="resources/css/styles.css" rel="stylesheet">
+
+    <!--Icons-->
+    <script src="js/lumino.glyphs.js"></script>
+
+    <style>
+        body {
+            background: #e0e8f1 !important;
+        }
+
+        table td, table th {
+            border: 1px solid #ddd;;
+        }
+
+        .table-wrapper {
+            overflow-x: scroll;
+            overflow-y: visible;
+            width: 100%;
+            margin-left: 0px;
+        }
+
+
+        td, th {
+            padding: 5px 20px;
+            width: 100px;
+            overflow: hidden;
+        }
+
+        .customBorder {
+            border-radius: 5px 0px 0px 5px;
+            border-right: none !important;
+            box-shadow: none;
+            border: groove;
+            padding: 5px;
+            border-width: 2px;
+        }
+
+        .customBorder2 {
+            border-radius: 0px 5px 5px 0px;
+            border-left: none !important;
+            box-shadow: none;
+            border: groove;
+            padding: 5px;
+            width: 50px;
+            margin-bottom: 3px;
+            margin-left: -5px;
+            border-width: 2px;
+            border-width: 1px !important;
+            border-color: grey;
+            height: 34px !important;
+        }
+
+            .customBorder2:hover {
+                background-color: cornflowerblue;
+                border-width: 1px !important;
+                color: white;
+            }
+
+        .customBtn {
+            margin: 2px;
+            font-size: 12px;
+        }
+
+        .overlay {
+            background-color: rgba(0, 0, 0, 0.6);
+            bottom: 0;
+            cursor: default;
+            left: 0;
+            opacity: 0;
+            position: fixed;
+            right: 0;
+            top: 0;
+            visibility: hidden;
+            z-index: 1;
+            transition: opacity .5s;
+        }
+
+            .overlay:target {
+                visibility: visible;
+                opacity: 1;
+            }
+
+                .overlay:target + .popup {
+                    top: 10%;
+                    opacity: 1;
+                    visibility: visible;
+                }
+
+        .popup {
+            background-color: #fff;
+            border: 3px solid #fff;
+            display: inline-block;
+            left: 50%;
+            opacity: 0;
+            padding: 15px;
+            position: fixed;
+            text-align: justify;
+            top: 40%;
+            visibility: hidden;
+            z-index: 10;
+            transform: translate(-50%, -50%);
+            border-radius: 7px;
+            transition: opacity .5s, top .5s;
+            width: 300px;
+            position: absolute;
+            margin-bottom: 20px;
+            margin-top: 130px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Container. Khong dung vao cho nay -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#"><span>Admin</span>Panel</a>
+                <ul class="user-menu">
+                    <li class="dropdown pull-right">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class='glyphicon glyphicon-user' style="font-size: 12px; margin-right: 5px"></i>
+                            Admin <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">
+                                <i class='glyphicon glyphicon-user' style="font-size: 12px; margin-right: 5px"></i>
+                                Profile</a></li>
+                            <li><a href="#">
+                                <i class='glyphicon glyphicon-lock' style="font-size: 12px; margin-right: 5px"></i>
+                                Settings</a></li>
+                            <li><a href="Login.aspx">
+                                <i class='glyphicon glyphicon-minus-sign' style="font-size: 12px; margin-right: 5px"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Sidebar. Khong dung vao cho nay -->
+    <div id="sidebar-collapse" class="col-sm-3 col-lg-2 sidebar" style="z-index: 0;">
+        <form role="search">
+            <div class="form-group" align="center">
+                <img src="resources/avatar.png" alt="" style="margin-top: 10px;">
+            </div>
+        </form>
+        <ul class="nav menu" style="margin-left: 15px">
+            <li id="categoryForm"><a href="CatergoryForm.aspx">
+                
+                Category Form</a></li>
+            <li id="productForm"><a href="ProductForm.aspx">
+                
+                Product Form</a></li>
+            <li id="shipperForm"><a href="ShipperForm.aspx">
+                
+                Shipper Form</a></li>
+            <li id="orderForm"><a href="OrderForm.aspx">
+                
+                Order Form</a></li>
+            <li id="employeeForm"><a href="EmployeeForm.aspx">
+                
+                Employee Form</a></li>
+            <li id="supplierForm"><a href="SupplierForm.aspx">
+                
+                Supplier Form</a></li>
+            <li id="customerForm"><a href="CustomerForm.aspx">
+                
+                Customer Form</a></li>
+            <li role="presentation" class="divider"></li>
+        </ul>
+    </div>
+
+    <!-- Khong dung vao cho nay -->
+    <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+        <div class="row">
+            <ol class="breadcrumb">
+                <li style="font-size: 18px;"><a href="#">
+                    <i class='glyphicon glyphicon-home' style="font-size: 10px;"></i></a></li>
+                <li class="active" style="font-size: 16px;"><b>Hello, Admin</b></li>
+            </ol>
+        </div>
+        <!--/.row-->
+
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+    </div>
+</body>
+</html>
